@@ -54,7 +54,7 @@ namespace BLL
             /// <param name="biao">表名</param>
             /// <param name="id">要删除的id</param>
             /// <returns></returns>
-            public int delete(string biao, string id)
+            public int TDelete(string biao, string id)
             {
                 string sql = $"delete {biao} where id={id}";
                 return DBHelper.ExecuteNonQuery(sql);
@@ -65,7 +65,7 @@ namespace BLL
             /// <param name="biao"></param>
             /// <param name="id"></param>
             /// <returns></returns>
-            public T Fan(string biao, int id)
+            public T TFan(string biao, int id)
             {
                 string sql = $"select * from {biao} where id={id}";
                 return DBHelper.GetToList<T>(sql)[0];

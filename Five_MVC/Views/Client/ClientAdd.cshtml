@@ -1,0 +1,75 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ClientAdd</title>
+    <script src="~/script/jquery-3.3.1.js"></script>
+    <link href="~/script/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div> 
+        <table class="table table-bordered">
+            <tr>
+                <td>姓名：</td>
+                <td><input id="Text1" type="text" /></td>
+            </tr>
+            <tr>
+                <td>手机号：</td>
+                <td><input id="Text2" type="text" /></td>
+            </tr>
+            <tr>
+                <td>上传头像：</td>
+                <td>
+                     <input id="Userfile" type="file" name="name" />
+                </td>
+            </tr>
+            <tr>
+                <td>账号：</td>
+                <td><input id="Text4" type="text" /></td>
+            </tr>
+            <tr>
+                <td>密码：</td>
+                <td><input id="Text5" type="password" /></td>
+            </tr>
+            <tr>
+                <td>确认密码：</td>
+                <td><input id="Text6" type="password" /></td>
+            </tr>
+            <tr>
+                <td><input id="Button1" type="button" value="注册" onclick="zhu()" /></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+<script>
+    function zhu() {
+        var formDate = new FormData();
+        var files = $("#Userfile").get(0).files;
+
+        //拼接请求参数
+        formDate.append("Userfile", files[0]);
+        //如果有其他参需要一起提交到后台
+        formDate.append("location", location);
+        $.ajax({
+            type: "POST",
+            url: 'http://localhost:60539/Five/zhuce',
+            contentType: "application/json;charset=UTF-8",
+            cache: false,
+            processData: false,
+            data: formDate,
+            error: function (request) {
+
+            },
+            success: function (data) {
+
+            }
+        });
+    }
+</script>
