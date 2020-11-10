@@ -24,12 +24,6 @@
                 <td><input id="Text2" type="text" /></td>
             </tr>
             <tr>
-                <td>上传头像：</td>
-                <td>
-                     <input id="Userfile" type="file" name="name" />
-                </td>
-            </tr>
-            <tr>
                 <td>账号：</td>
                 <td><input id="Text4" type="text" /></td>
             </tr>
@@ -50,26 +44,22 @@
 </html>
 <script>
     function zhu() {
-        var formDate = new FormData();
-        var files = $("#Userfile").get(0).files;
+        var a = $("#Text5").val();
+        var b = $("#Text6").val();
+        var data = {};
+        if (a == b) {
+           data.CName = $("#Text1").val(),
+           data.CPhone = $("#Text2").val(),
+               data.CAccount = $("#Text4").val(),
+                data.CPwd = a
+            $.post('http://localhost:60539/Five/zhuce', data, function (d) {
+                alert(d.mag);
+                //跳转
+            })
+        } else {
+            alert("两次密码输入不一致");
+        }
+        
 
-        //拼接请求参数
-        formDate.append("Userfile", files[0]);
-        //如果有其他参需要一起提交到后台
-        formDate.append("location", location);
-        $.ajax({
-            type: "POST",
-            url: 'http://localhost:60539/Five/zhuce',
-            contentType: "application/json;charset=UTF-8",
-            cache: false,
-            processData: false,
-            data: formDate,
-            error: function (request) {
-
-            },
-            success: function (data) {
-
-            }
-        });
     }
 </script>

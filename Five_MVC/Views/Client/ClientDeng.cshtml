@@ -13,19 +13,18 @@
     <title>ClientDeng</title>
 </head>
 <body>
-    <div> 
+    <div > 
         <div>
             <span>用户名：</span>
             <input id="username" type="text" />
         </div>
         <div>
-            <span>密码：</span>
+            <span>密码： </span>
             <input id="password" type="password"/>
         </div>
         <div>
             <input id="Button1" type="button" value="登录" onclick="deng()" />
             <input id="Reset1" type="button" value="重置" onclick="chong()" />
-        
         </div>
         <div></div>
     </div>
@@ -36,5 +35,23 @@
     function chong() {
         $("#username").val("");
         $("#password").val("");
+    }
+    function deng() {
+        var data = {};
+        data.CAccount = $("#username").val();
+        data.CPwd = $("#password").val();
+        $.post('http://localhost:60539/Five/denglu', data, function (d) {
+            console.log(d);
+            if (d.mag == "登陆成功") {
+                alert(d.msg);
+                //跳转
+            } else {
+                alert(d.msg);
+                //跳转
+            }
+               
+              
+           
+        })
     }
 </script>

@@ -106,6 +106,7 @@
     <None Include="packages.config" />
     <Content Include="Views\Client\ClientAdd.cshtml" />
     <Content Include="Views\Client\ClientDeng.cshtml" />
+    <Content Include="Views\Client\Zhuye.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
