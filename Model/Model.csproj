@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client.cs" />
-    <Compile Include="Driver.cs" />
     <Compile Include="Entrepot.cs" />
     <Compile Include="Feedback.cs" />
     <Compile Include="Goods.cs" />

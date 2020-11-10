@@ -3,19 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DAL;
+using Model;
 
 namespace Five_MVC.Controllers
 {
     public class TrucksController : Controller
     {
-        //// 货车显示
-        //public ActionResult Index()
-        //{
-        //    string sql = $"select * from Trucks";
-        //    List<Trucks> trucks = DAL.DBHelper.GetToList<Trucks>(sql);
-        //    return View(trucks);
-            
-        //}
+        // 货车显示
+        public ActionResult Index()
+        {
+            string sql = $"select * from Trucks";
+            List<Trucks> trucks = DAL.DBHelper.GetToList<Trucks>(sql);
+            return View(trucks);
+
+        }
 
         ////货车添加
         //public ActionResult Add(Trucks t)
