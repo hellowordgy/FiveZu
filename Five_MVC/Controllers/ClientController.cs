@@ -14,5 +14,10 @@ namespace Five_MVC.Controllers
         {
             return View();
         }
+        //登录
+        public ActionResult ClientDeng()
+        {
+            return View();
+        }
     }
 }
