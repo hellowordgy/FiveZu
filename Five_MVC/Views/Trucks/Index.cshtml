@@ -1,0 +1,106 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>货车档案</title>
+</head>
+<body>
+    <div> 
+        <table>
+            <input id="Button1" type="button" value="添加" onclick="Add()" />
+            <input id="Button1" type="button" value="删除" onclick="Delete()" />
+            <thead>
+                <tr>
+                    <th><input class='ckh' type="checkbox" /></th>
+                    <th>货车编码</th>
+                    <th>货车品牌</th>
+                    <th>货车类型</th>
+                    <th>车牌号</th>
+                    <th>车载限额(吨)</th>
+                    <th>油耗系数/公里</th>
+                    <th>备注</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody class="tb">
+                <tr>
+                    <th><input class='ckh' type="checkbox" /></th>
+                    <th>货车编码</th>
+                    <th>货车品牌</th>
+                    <th>货车类型</th>
+                    <th>车牌号</th>
+                    <th>车载限额(吨)</th>
+                    <th>油耗系数/公里</th>
+                    <th>备注</th>
+                    <th><input id="Button1" type="button" value="修改" /></th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+<script>
+    li()
+    //显示
+    function li() {
+        $.ajax({
+            url: "/Trucks/Index",
+            type: "get",
+            dataType: "json",
+            success: function (d) {
+                //清空列表
+                $(".tb").empty();
+                //遍历
+                $(d).each(function () {
+                    $(".tb").append(
+                        "<tr>"
+                        + "    <td><input class='ckb' type='checkbox' value'" + this.ID + "'/></td>"
+                        + "    <td>" + this.TBrand + "</td>  "
+                        + "    <td>" + this.TType + "</td>  "
+                        + "    <td>" + this.TPlate + "</td>  "
+                        + "    <td>" + this.TQuota + "</td>  "
+                        + "    <td>" + this.TConsum + "</td>  "
+                        + "    <td>" + this.TState + "</td>  "
+                        + "    <td><input type='button'  value='删除' style='background-color:lightpink'  onclick='delcall(" + this.ID + ")'/><input type='button'  value='修改' style='background-color:lightpink'  onclick='updcall(" + this.ID + ")'/></td > "
+                        + "</tr>"
+                    );
+                });
+            }
+        });
+    }
+    //单删
+    function delcall(id) {
+        if (confirm("确定删除吗？") == true) {
+            $.ajax({
+                url: "/Trucks/Delete?id=" + id,
+                type: "post",
+                dataType: "json",
+                success: function (d) {
+                    if (d > 0) {
+                        alert("删除成功");
+                        location.href = "/Trucks/Index";
+                    }
+                    else {
+                        alert("删除失败");
+                    }
+                }
+            });
+        }
+    }
+    //添加按钮点击事件
+    function Add() {
+        location.href = "/Trucks/Add";
+    }
+    //修改按钮点击事件
+    function updcall(id) {
+        location.href = "/Trucks/Edit?id=" + id;
+    }
+</script>
+
