@@ -19,5 +19,10 @@ namespace Five_MVC.Controllers
         {
             return View();
         }
+        //主页面
+        public ActionResult Zhuye()
+        {
+            return View();
+        }
     }
 }

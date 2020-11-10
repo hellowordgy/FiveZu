@@ -96,7 +96,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClientController.cs" />
-    <Compile Include="Controllers\TrucksController.cs" />
+    <Compile Include="Controllers\PlansController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -107,7 +107,7 @@
     <None Include="packages.config" />
     <Content Include="Views\Client\ClientAdd.cshtml" />
     <Content Include="Views\Client\ClientDeng.cshtml" />
-    <Content Include="Views\Trucks\Index.cshtml" />
+    <Content Include="Views\Client\Zhuye.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -118,20 +118,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BLL\BLL.csproj">
-      <Project>{3f81bd80-ddb1-4bc5-b57c-b3b002678742}</Project>
-      <Name>BLL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DAL\DAL.csproj">
-      <Project>{aa3fc165-df85-4291-928d-302b753560ef}</Project>
-      <Name>DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Model\Model.csproj">
-      <Project>{b216fe99-0afe-45f6-ad80-ab08940e9f72}</Project>
-      <Name>Model</Name>
-    </ProjectReference>
+    <Folder Include="Views\Plans\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

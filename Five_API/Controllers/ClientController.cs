@@ -1,4 +1,5 @@
 ﻿using BLL;
+using DAL;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -17,24 +18,24 @@ namespace Five_API.Controllers
         //注册
         [HttpPost]
         [Route("zhuce")]
-        public IHttpActionResult ClientAdd()
+        public IHttpActionResult ClientAdd(Client c)
         {
-            string path = AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "img/";
-            //用户提交的数据
-            var Data = System.Web.HttpContext.Current.Request.Form;
-            string filesrc = string.Empty;
-            string src = string.Empty;
-            //获取上传的文件
-            var httpPostedFile = HttpContext.Current.Request.Files;
-            //int i = bll.TAdd(c);
-            //return Json(new { msg = i > 0 ? "注册成功" : "注册失败" });
-            return Json(1);
+            c.CTime = DateTime.Now;
+            string sql = $"insert into client(CName,CPhone,CTime,CAccount,CPwd) values('{c.CName}','{c.CPhone}','{c.CTime}','{c.CAccount}','{c.CPwd}')";
+            int i = DBHelper.ExecuteNonQuery(sql);
+            return Json(new
+            {
+                mag = i > 0 ? "注册成功" : "注册失败"
+            }); 
         }
         //登录
-        public IHttpActionResult ClientDeng(string username,string password)
+        [HttpPost]
+        [Route("denglu")]
+        public IHttpActionResult ClientDeng(Client c)
         {
-            object i = bll.ClientDeng(username, password);
-            return Json(new { msg = i != null ? "1" : "0" });
+
+            object i = bll.ClientDeng(c.CAccount, c.CPwd);
+            return Json(new { msg = i != null ? "登录成功" : "登录失败,账号或密码错误" });
         }
     }
 }
