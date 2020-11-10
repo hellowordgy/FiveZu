@@ -12,8 +12,8 @@ namespace DAL
 {
     public class DBHelper
     {
-        //public static string strConn = "server=.;database=1803A;Integrated Security=True;";
-        public static string strConn = ConfigurationManager.ConnectionStrings["SQLConnString"].ConnectionString;
+        public static string strConn = "Data Source=192.168.3.29;Initial Catalog=Logistics_5;User ID=sa;password=123456";
+        //public static string strConn = ConfigurationManager.ConnectionStrings["SQLConnString"].ConnectionString;
 
 
         /// <summary>
